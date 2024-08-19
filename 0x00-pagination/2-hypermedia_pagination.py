@@ -50,9 +50,8 @@ class Server:
         # If page_size = 7 ,NT: last index is exclusive
         # and first index, inclusive
         return ((page - 1) * page_size, page * page_size)
-    
+
     def get_hyper(self, page: int = 1, page_size: int = 10) -> dict:
-        # print(page, page_size)
         self.total_dataset = len(self.dataset())
         total_pages = math.ceil(self.total_dataset / page_size)
         # Use self, so you can access this instance attribute
@@ -60,9 +59,10 @@ class Server:
         self.result_dict = {
             "page_size": page_size,
             "page": page,
-            "data" : self.get_page(page, page_size),
-            "next_page" : page + 1 if (page + 1) < len(self.__dataset) and (page < total_pages) else None,
-            "prev_page" : page - 1 if (page - 1) > 0 else None,
+            "data": self.get_page(page, page_size),
+            "next_page": page + 1 if (page + 1) < len(
+                        self.__dataset) and (page < total_pages) else None,
+            "prev_page": page - 1 if (page - 1) > 0 else None,
             "total_pages": total_pages
             }
         return self.result_dict
