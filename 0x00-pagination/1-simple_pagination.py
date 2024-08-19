@@ -7,7 +7,7 @@ from typing import List
 class Server:
     """Server class to paginate a database of popular baby names.
     """
-    DATA_FILE = "Popular_Baby_Names.csv"
+    DATA_FILE = "./data.csv"
 
     def __init__(self):
         self.__dataset = None
@@ -36,11 +36,11 @@ class Server:
         length = len(self.__dataset)
         # print(length)
         list = []
+        # if (start < length) and (end > length):
+        #     end = length
         if (start >= length) or (end > length) or length == 0:
             # print("inh here")
             return list
-        # else: 
-        #     return self.__dataset[start: end]
         else:
             for index in range(start, end):
                 list.append(self.__dataset[index])
