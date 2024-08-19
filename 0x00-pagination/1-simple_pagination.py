@@ -39,12 +39,12 @@ class Server:
         if (start >= length) or (end > length) or length == 0:
             # print("inh here")
             return list
-        else: 
-            return self.__dataset[start: end]
-        # else:
-        #     for index in range(start, end):
-        #         list.append(self.__dataset[index])
-        # return list
+        # else: 
+        #     return self.__dataset[start: end]
+        else:
+            for index in range(start, end):
+                list.append(self.__dataset[index])
+        return list
 
     def index_range(self, page, page_size):
         # Gets page 1 = (0,7); page 2 = (7,14)
