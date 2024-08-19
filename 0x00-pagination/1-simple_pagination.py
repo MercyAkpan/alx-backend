@@ -38,8 +38,9 @@ class Server:
         length = len(self.__dataset)
         # print(length)
         list = []
-
-        if (start >= length) or (end > length) or length == 0:
+        if (start < length) and (end > length):
+            end = length
+        elif (start >= length) or (end > length) or length == 0:
             # print("inh here")
             return list
         else:
