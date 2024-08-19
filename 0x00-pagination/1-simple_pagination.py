@@ -48,7 +48,7 @@ class Server:
                 list.append(self.__dataset[index])
         return list
 
-    def index_range(self, page:int, page_size:int)-> tuple:
+    def index_range(self, page, page_size):
         # Gets page 1 = (0,7); page 2 = (7,14)
         # If page_size = 7 ,NT: last index is exclusive
         # and first index, inclusive
