@@ -27,7 +27,7 @@ class FIFOCache(BaseCaching):
         if (len(self.cache_data.keys()) > BaseCaching.MAX_ITEMS):
             first = next(iter(self.cache_data))
             self.cache_data.pop(first)
-            print(f"DISCARD:",first)
+            print(f"DISCARD:", first)
         return
 
     def get(self, key):
