@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""sumary_line
-This module contains a function to 
+"""
+This module contains a function to
 return the start and end indexes of a page
 """
+
 
 def index_range(page, page_size):
     """

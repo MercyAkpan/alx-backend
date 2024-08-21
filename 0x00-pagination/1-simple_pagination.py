@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-    This module contains a class Server that paginates a database.
+This module contains a class Server that paginates a database.
 """
 import csv
 import math
@@ -26,13 +26,12 @@ class Server:
                 dataset = [row for row in reader]
             # This line skips the Title row.
             self.__dataset = dataset[1:]
-
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """
         This function returns a list of lists.
-        which is the dataset between the start and end indexes 
+        which is the dataset between the start and end indexes
         """
         assert (
             isinstance(page, int) and page > 0) and (
@@ -59,10 +58,10 @@ class Server:
         # If page_size = 7 ,NT: last index is exclusive
         # and first index, inclusive
         return ((page - 1) * page_size, page * page_size)
-    
+
     def get_hyper(self, page: int = 1, page_size: int = 10) -> dict:
         """
-        This method returns a dictionary containing the following key-value pairs:
+        This method returns a dict containing the following key-value pairs:
         """
         # print(page, page_size)
         self.total_dataset = len(self.dataset())
@@ -72,9 +71,10 @@ class Server:
         self.result_dict = {
             "page_size": page_size,
             "page": page,
-            "data" : self.get_page(page, page_size),
-            "next_page" : page + 1 if (page + 1) < len(self.__dataset) and (page < total_pages) else None,
-            "prev_page" : page - 1 if (page - 1) > 0 else None,
+            "data": self.get_page(page, page_size),
+            "next_page": page + 1 if (page + 1) < len(
+                        self.__dataset) and (page < total_pages) else None,
+            "prev_page": page - 1 if (page - 1) > 0 else None,
             "total_pages": total_pages
             }
         return self.result_dict
