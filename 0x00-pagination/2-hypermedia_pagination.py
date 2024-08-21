@@ -2,6 +2,9 @@
 import csv
 import math
 from typing import List
+""""
+This module contains a class Server that paginates a database.
+"""
 
 
 class Server:
@@ -10,6 +13,8 @@ class Server:
     DATA_FILE = "Popular_Baby_Names.csv"
 
     def __init__(self):
+        """Initialises an instance of the Server class"""
+        
         self.__dataset = None
 
     def dataset(self) -> List[List]:
@@ -25,6 +30,10 @@ class Server:
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
+        """
+        This function returns a list of lists.
+        which is the dataset between the start and end indexes 
+        """        
         assert (
             isinstance(page, int) and page > 0) and (
             isinstance(page_size, int) and page_size > 0)
@@ -46,12 +55,19 @@ class Server:
     # self is needed in this function, as it is part of a class.
     # And it would need to be called by an instance of a class.
     def index_range(self, page, page_size):
+        """
+        This method returns a tuple of start and end index of a page
+        """
         # Gets page 1 = (0,7); page 2 = (7,14)
         # If page_size = 7 ,NT: last index is exclusive
         # and first index, inclusive
         return ((page - 1) * page_size, page * page_size)
 
     def get_hyper(self, page: int = 1, page_size: int = 10) -> dict:
+        """
+        This method returns a dictionary containing the following key-value pairs:
+        """
+        
         self.total_dataset = len(self.dataset())
         total_pages = math.ceil(self.total_dataset / page_size)
         # Use self, so you can access this instance attribute
